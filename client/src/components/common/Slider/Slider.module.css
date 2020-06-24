@@ -1,0 +1,30 @@
+.arrow-next {
+  color: black
+}
+
+.mainSlider {
+  width: 530px;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.dotsImg img {
+  width: 60px;
+  border-radius: 5px;
+}
+
+.dotsImg {
+  display: inline;
+  margin-left: 10px;
+}
+
+.dots {
+  margin-top: 20px;
+  list-style-type: none;
+  display: inline;
+}
+
+.dots li {
+  display: inline;
+}

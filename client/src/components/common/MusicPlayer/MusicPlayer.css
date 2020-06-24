@@ -1,0 +1,37 @@
+.audio-player {
+  background-color: #fff;
+  padding: 0.5rem;
+  margin-top: 15px;
+  margin-left: 15px;
+  border-radius: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  
+}
+
+#play {
+  cursor: pointer;
+}
+
+#play-icon {
+  opacity: 1;
+  background: #4A76A8;
+  border-radius: 200px;
+}
+#rewind-icon {
+  opacity: 1;
+  background: #4A76A8;
+  border-radius: 200px;
+}
+#forward-icon {
+  opacity: 1;
+  background: #4A76A8;
+  border-radius: 200px;
+}
+#volume-icon {
+  opacity: 1;
+  background: #4A76A8;
+  border-radius: 200px;
+}
+
+

@@ -1,0 +1,33 @@
+.SimpleMenu {
+  display: flex;
+  margin-right: 15px;
+  margin-top: -16px;
+  padding: 10px;
+  height: 60px;
+  width: 100px;
+}
+
+.SimpleMenu button:focus {
+  outline: none;
+}
+
+.loginblock {
+  display: flex;
+  height: 75px;
+  margin-top: -15px;
+}
+
+.loginblock:hover {
+  background-color: #3d6898;
+}
+
+.loginblock p {
+  margin-left: 15px;
+  margin-top: 30px;
+}
+
+.loginblock i {
+  margin-left: 10px;
+  margin-top: 33px;
+
+}

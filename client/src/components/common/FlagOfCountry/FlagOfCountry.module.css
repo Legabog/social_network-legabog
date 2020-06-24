@@ -1,0 +1,30 @@
+.rootCountry img {
+    width: 60px;
+    border-radius: 13px;
+}
+
+.rootCountry {
+    display: inline-flex;
+    margin: 5px;
+    width: 190px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.titleCountry {
+    margin-left: 10px;
+    font-size: 80%;
+    color: #4A76A8;
+
+}
+
+.idCountry {
+    margin-top: 0px;
+}
+
+.inputChoose {
+    margin-left: 30px;
+    width: 30px;
+    height: 15px;
+}
+
