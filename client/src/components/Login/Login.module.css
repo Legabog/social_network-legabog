@@ -1,0 +1,90 @@
+.login {
+    width: 500px;
+    /* display: inline-block; */
+    border-radius: 10px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 150%;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.signIn {
+    display: inline-block;
+    width: 250px;
+    height: 60px;
+    background-color: #4a76a8;
+    border-radius: 10px;
+    margin-top: -40px;
+}
+
+.signIn h1 {
+    color: #fff;
+}
+
+.img img{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    padding: 30px;
+}
+
+.field1 {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.field1 i {
+    font-size: 150%;
+    padding: 10px;
+}
+
+.field2 {
+    display: flex;
+    margin-left: 55px;
+    margin-bottom: 20px;
+}
+
+.field2 i {
+    font-size: 150%;
+    padding: 10px;
+}
+
+.field3 {
+    display: flex;
+    color: #4a76a8;
+    margin-left: 105px;
+    margin-bottom: 0px;
+    margin-top: -10px;
+}
+
+.field3 p {
+    margin-left: 10px;
+    
+}
+
+.formButton button {
+    border: none;
+    width: 200px;
+    font-size: 130%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #4a76a8;
+    color: #fff;
+}
+
+.formButton button:focus {
+    outline: none;
+}
+
+.icon1 {
+    color: #4a76a8;
+}
+
+.icon2 {
+    color: #4a76a8;
+}
