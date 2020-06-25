@@ -11,7 +11,7 @@ const Profile = (props) => {
 
   return (
     <div className={classes.profile}>
-        <ProfileInfo {...props} />        
+        <ProfileInfo {...props}/>        
     </div>
   );
 };

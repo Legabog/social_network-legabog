@@ -1,11 +1,11 @@
 import React from "react";
 import DefaultPhoto from "../../../assets/images/user.png";
-import ProfileStatus from "./ProfileStatus";
 import "antd/dist/antd.css";
 import { Rate } from "antd";
 import classes from "./ProfileInfo.module.css";
 import SimpleSlider from "../../common/Slider/Slider";
 import MyPostsContainer from "../MyPosts/MyPostsContainer";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
   return (
@@ -70,7 +70,7 @@ const ProfileInfo = (props) => {
             </div>
             <p>online</p>
 
-            <ProfileStatus {...props} />
+            <ProfileStatusWithHooks {...props} />
             <hr align="center" width="550" size="3" />
             <h4>Information about me:</h4>
             <li>{props.profile.aboutMe || "Нет информации"} </li>
