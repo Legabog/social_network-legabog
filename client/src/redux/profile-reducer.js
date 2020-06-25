@@ -122,7 +122,7 @@ export const getProfileStatus = (userId) => {
 export const updateProfileStatus = (status) => {
   return (dispatch) => {
     userAPI.updateProfileStatus(status).then((response) => {
-      if (response.resulCode === 0) {
+      if (response.resultCode === 0) {
         dispatch(setProfileStatus(status));
       }
     });
