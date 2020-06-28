@@ -23,13 +23,21 @@ import PlayLists from "./components/Music/MusicList/PlayLists/PlayLists";
 import CreateAlbum from "./components/Music/MusicList/CreateAlbum/CreateAlbum";
 import { getMusicAlbumsData } from "./redux/musicalbums-reducer";
 import ErrorRoute from "./components/common/ErrorRoute/ErrorRoute";
-import { addToPlayList, switchStateOfPlayLists, addTrackToPlayList } from "./redux/musicalplaylists-reducer";
+import {
+  addToPlayList,
+  switchStateOfPlayLists,
+  addTrackToPlayList,
+  getMyOwnPlayLists,
+  createNewPlayList,
+  deleteOwnPlayList
+} from "./redux/musicalplaylists-reducer";
 import OwnPlayListsRouter from "./components/Music/OwnPlayListsRouter/OwnPlayListsRouter";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
     this.props.getMusicAlbumsData();
+    this.props.getMyOwnPlayLists();
   }
 
   render() {
@@ -73,7 +81,7 @@ class App extends React.Component {
                 exact
                 path="/music-list/playlists/create"
                 component={() => (
-                  <CreateAlbum addToPlayList={this.props.addToPlayList} />
+                  <CreateAlbum addToPlayList={this.props.createNewPlayList} />
                 )}
               />
               {this.props.musicAlbums.map((e) => (
@@ -105,13 +113,15 @@ class App extends React.Component {
                 <Route
                   key={Math.random()}
                   exact
-                  path={`/music-playlists/${e.name}/`}
+                  path={`/music-playlists/${e.title}/`}
                   component={() => (
                     <OwnPlayListsRouter
-                      img={e.img}
-                      title={e.name}
+                      id={e._id}
+                      img={e.playlistcoverUrl}
+                      title={e.title}
                       description={e.description}
                       tracks={e.tracks}
+                      deleteOwnPlayList={this.props.deleteOwnPlayList}
                     />
                   )}
                 />
@@ -146,6 +156,9 @@ export default compose(
     getMusicAlbumsData,
     addToPlayList,
     switchStateOfPlayLists,
-    addTrackToPlayList
+    addTrackToPlayList,
+    getMyOwnPlayLists,
+    createNewPlayList,
+    deleteOwnPlayList
   })
 )(App);

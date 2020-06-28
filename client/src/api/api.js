@@ -80,14 +80,36 @@ export const userAPI = {
   },
 
   getMusicAlbums() {
-    return axios.get("http://localhost:4000/musicalbums/get-musicalbums")
-    .then((response) => {
-      return response.data
-    })
+    return axios
+      .get("http://localhost:4000/musicalbums/get-musicalbums")
+      .then((response) => {
+        return response.data;
+      });
   },
 
   deleteMusicAlbum(id) {
-    return axios.delete(`http://localhost:4000/musicalbums/delete-album/${id}`)
+    return axios.delete(`http://localhost:4000/musicalbums/delete-album/${id}`);
+  },
+
+  getMyOwnPlaylists() {
+    return axios
+      .get("http://localhost:4000/myownplaylists/get-playlists")
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  createNewPlayList(data) {
+    return axios.post(
+      "http://localhost:4000/myownplaylists/create-playlist",
+      data
+    );
+  },
+
+  deleteOwnPlayList(id) {
+    return axios.delete(
+      `http://localhost:4000/myownplaylists//delete-playlist/${id}`
+    );
   },
 
   getNews(country, category) {
