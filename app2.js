@@ -6,6 +6,7 @@ const config = require("config");
 
 // Express Route
 const musicalbumsRoute = require("./routes/musicalbums.routes")
+const myownplaylistsRoute = require("./routes/myownplaylists.routes")
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 app.use('/musicalbums', musicalbumsRoute)
+app.use('/myownplaylists', myownplaylistsRoute)
 
 
 // PORT
