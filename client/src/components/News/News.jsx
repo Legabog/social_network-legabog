@@ -63,7 +63,7 @@ const News = (props) => {
                 aria-label="Example select with button addon"
               >
                 {props.categories.map((e) => (
-                  <option value={e.id} key={Math.random(1000)}>
+                  <option value={e}  key={e}>
                     {e}
                   </option>
                 ))}
