@@ -29,7 +29,7 @@ import {
   addTrackToPlayList,
   getMyOwnPlayLists,
   createNewPlayList,
-  deleteOwnPlayList
+  deleteOwnPlayList,
 } from "./redux/musicalplaylists-reducer";
 import OwnPlayListsRouter from "./components/Music/OwnPlayListsRouter/OwnPlayListsRouter";
 
@@ -159,6 +159,6 @@ export default compose(
     addTrackToPlayList,
     getMyOwnPlayLists,
     createNewPlayList,
-    deleteOwnPlayList
+    deleteOwnPlayList,
   })
 )(App);

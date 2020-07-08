@@ -87,13 +87,17 @@ export const setMyOwnPlayListsData = (data) => {
 
 export const createNewPlayList = (data) => {
   return (dispatch) => {
-    userAPI.createNewPlayList(data)
+    userAPI.createNewPlayList(data).then(() => {
+      dispatch(getMyOwnPlayLists())
+    })
   }
 }
 
 export const deleteOwnPlayList = (id) => {
   return (dispatch) => {
-    userAPI.deleteOwnPlayList(id)
+    userAPI.deleteOwnPlayList(id).then(() => {
+      dispatch(getMyOwnPlayLists())
+    })
   }
 }
 
