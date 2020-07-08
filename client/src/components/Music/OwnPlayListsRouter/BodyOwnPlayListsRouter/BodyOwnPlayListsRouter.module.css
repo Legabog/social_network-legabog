@@ -34,3 +34,19 @@
 .lastBlock {
     height: 30px;
 }
+
+.delete {
+    margin-top: 50px;
+    margin-left: 550px;
+    font-size: 200%;
+    color: #F62A54;
+
+}
+
+.delete a {
+    color: #F62A54;
+}
+
+.delete i:hover {
+    cursor: pointer;
+}

@@ -4,32 +4,24 @@ import HeaderOwnPlayListsRouter from "./HeaderOwnPlayListsRouter/HeaderOwnPlayLi
 import BodyOwnPlayListsRouter from "./BodyOwnPlayListsRouter/BodyOwnPlayListsRouter";
 
 
-class OwnPlayListsRouter extends React.Component {
+const OwnPlayListsRouter = (props) => {
 
-  state = {
-    tracks: []
-  }
+  console.log(props.img)
 
-  AddTrack = (track) => {
-    let joined = this.state.tracks.concat(track)
-    this.setState({tracks: joined})
-  }
-
-
-  render() {
   return (
     <div className={classes.ownPlayListsRouter}>
       <HeaderOwnPlayListsRouter />
       <BodyOwnPlayListsRouter
-        img={this.props.img}
-        title={this.props.title}
-        description={this.props.description}
-        tracks={this.state.tracks}
-        AddTrack={this.AddTrack}
+        id={props.id}
+        img={props.img}
+        title={props.title}
+        description={props.description}
+        tracks={props.tracks}
+        deleteOwnPlayList={props.deleteOwnPlayList}
       />
     </div>
   );
-  }
+  
 };
 
 export default OwnPlayListsRouter;

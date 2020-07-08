@@ -2,9 +2,10 @@ import React from "react";
 import classes from "./BodyOwnPlayListsRouter.module.css";
 import DefaultMusic from "../../../../assets/apple theme/music.jpg";
 import TracksItem from "./TrackItem/TrackItem";
+import { NavLink } from "react-router-dom";
+
 
 const BodyOwnPlayListsRouter = (props) => {
-  console.log(props.tracks)
   return (
     <div className={classes.bodyOwnPlayListsRouter}>
       <div className={classes.playListImage}>
@@ -12,16 +13,26 @@ const BodyOwnPlayListsRouter = (props) => {
       </div>
       <div className={classes.playListTitle}>
         <h1>{props.title}</h1>
-        <h4 onClick={() => props.AddTrack({title: "Qwe", author: "tri"})}>{props.description}</h4>
+        <h4 onClick={() => props.AddTrack({ title: "Qwe", author: "tri" })}>
+          {props.description}
+        </h4>
         <div className={classes.playListTracks}>
           {props.tracks.map((e) => (
-            <TracksItem key={Math.random()} title={e.title} author={e.author} />
+            <TracksItem key={e._id} title={e.title} author={e.author} />
           ))}
+        </div>
+        <div className={classes.delete}>
+          <NavLink to="/music-list/playlists/">
+            <i
+              className="fas fa-trash"
+              onClick={() => {
+                props.deleteOwnPlayList(props.id);
+              }}
+            ></i>
+          </NavLink>
         </div>
         <div className={classes.lastBlock}></div>
       </div>
-
-      
     </div>
   );
 };

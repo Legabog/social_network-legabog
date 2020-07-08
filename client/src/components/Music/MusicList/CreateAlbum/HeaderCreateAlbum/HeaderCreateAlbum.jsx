@@ -55,11 +55,29 @@ class HeaderCreateAlbum extends React.Component {
           <div
             className={classes.buttonDone}
             onClick={() => {
-              this.props.addToPlayList(
-                this.state.img,
-                this.state.name,
-                this.state.description
-              );
+              this.props.addToPlayList({
+                title: this.state.name + "",
+                description: this.state.description + "",
+                playlistcoverUrl: this.state.img,
+
+                tracks: [
+                  {
+                    title: "Track 1",
+
+                    author: "Author 1",
+
+                    trackUrl: "No url",
+                  },
+                  {
+                    title: "Track 2",
+
+                    author: "Author 2",
+
+                    trackUrl: "No url",
+                  },
+                ],
+              });
+              console.log(this.state.img);
             }}
           >
             <h3>Done</h3>

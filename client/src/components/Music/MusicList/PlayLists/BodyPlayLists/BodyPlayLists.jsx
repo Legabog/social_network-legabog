@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import PlayList from "../PlayList/PlayList";
 
 const BodyPlayLists = (props) => {
+  console.log(props.ownPlayLists)
+
   return (
     <div className={classes.bodyPlayLists}>
       {props.playListSwitcher ? null : (
@@ -20,8 +22,8 @@ const BodyPlayLists = (props) => {
       {props.ownPlayLists.map((e) => (
         <PlayList
           key={Math.random()}
-          img={e.img}
-          name={e.name}
+          img={e.playlistcoverUrl}
+          name={e.title}
           description={e.description}
           playListSwitcher={props.playListSwitcher}
           addTrackToPlayList={props.addTrackToPlayList}
