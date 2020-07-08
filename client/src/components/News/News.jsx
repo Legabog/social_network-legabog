@@ -7,7 +7,7 @@ const News = (props) => {
     <div className={classes.root}>
       <div className={classes.optionsTogether}>
         <div className={classes.optionsLabel}>
-          <i className="fas fa-rss" style={{fontSize: "1500%", height: "200px"}}></i>
+          <i className="fas fa-rss" ></i>
           <h1>Headline News</h1>
         </div>
         <div className={classes.options}>

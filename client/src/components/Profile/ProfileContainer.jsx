@@ -2,25 +2,45 @@ import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getProfile, getProfileStatus, getCaptcha, updateProfileStatus, changeStatusHandler } from "../../redux/profile-reducer";
+import {
+  getProfile,
+  getProfileStatus,
+  getCaptcha,
+  updateProfileStatus,
+  changeStatusHandler,
+  savePhoto,
+  getFollowStatus,
+  setFollowTrue,
+  setFollowFalse,
+} from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.match.params.userId;
     if (!userId) {
       userId = 7341;
-      
     }
     this.props.getProfile(userId);
     this.props.getProfileStatus(userId);
+    this.props.getFollowStatus(userId);
+  }
+
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.refreshProfile();
+    }
   }
 
   render() {
     return (
       <div>
-        <Profile {...this.props}/>
+        <Profile {...this.props} isOwner={!!this.props.match.params.userId} />
       </div>
     );
   }
@@ -31,16 +51,23 @@ let mapStateToProps = (state) => ({
   status: state.profileReducer.profileStatus,
   authrizedUserId: state.authReducer.userId,
   isAuth: state.authReducer.isAuth,
-  captcha: state.profileReducer.captcha
+  captcha: state.profileReducer.captcha,
+  followStatus: state.profileReducer.followStatus,
+  fetchStatus: state.profileReducer.fetchStatus
 });
 
 export default compose(
-  connect(mapStateToProps, { 
+  connect(mapStateToProps, {
     getProfile,
     getProfileStatus,
     updateProfileStatus,
     changeStatusHandler,
-    getCaptcha }),
+    getCaptcha,
+    savePhoto,
+    getFollowStatus,
+    setFollowTrue,
+    setFollowFalse,
+  }),
   withRouter,
   withAuthRedirect
 )(ProfileContainer);

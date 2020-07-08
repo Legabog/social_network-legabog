@@ -8,10 +8,9 @@ const Profile = (props) => {
     return <Preloader />;
   }
 
-
   return (
     <div className={classes.profile}>
-        <ProfileInfo {...props}/>        
+      <ProfileInfo {...props} isOwner={props.isOwner} />
     </div>
   );
 };

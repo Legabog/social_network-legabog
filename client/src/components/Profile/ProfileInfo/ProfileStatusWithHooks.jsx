@@ -17,29 +17,37 @@ const ProfileStatusWithHooks = (props) => {
 
   return (
     <div className={classes.profileStatus}>
-      {!editMode ? (
-        <div>
-          <span
-            onClick={() => {
-              setEditMode(true);
-            }}
-          >
+      {props.isOwner 
+        ? <div>
+          <span>
             {props.status || "---"}
           </span>
         </div>
-      ) : (
-        <div>
-          <input
-            onChange={onStatusChange}
-            autoFocus={true}
-            value={status}
-            onBlur={() => {
-              setEditMode(false);
-              props.updateProfileStatus(status);
-            }}
-          ></input>
-        </div>
-      )}
+        : !editMode ? (
+          <div>
+            <span
+              onClick={() => {
+                setEditMode(true);
+              }}
+            >
+              {props.status || "---"}
+            </span>
+          </div>
+        ) : (
+          <div>
+            <input
+              onChange={onStatusChange}
+              autoFocus={true}
+              value={status}
+              onBlur={() => {
+                setEditMode(false);
+                props.updateProfileStatus(status);
+              }}
+            ></input>
+          </div>
+        )
+      }
+      
     </div>
   );
 };

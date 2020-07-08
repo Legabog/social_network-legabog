@@ -41,7 +41,7 @@ const Settings = (props) => {
                 description: "Its my first Album",
 
                 playlistcoverUrl:
-                  "https://pbs.twimg.com/media/BkG5LCmCcAAOL7P.jpg:large",
+                  "https://drive.google.com/file/d/1W_Zf-QkGIU1n8Ffvk4yN60jE2BAyH-aR/view?usp=sharing",
 
                 tracks: [
                   {
@@ -65,7 +65,7 @@ const Settings = (props) => {
             entertainment
           </button>
           <button className={classes.categoriesbuttons} onClick={() => {
-            userAPI.deleteOwnPlayList("5ef891608439d640607749b8")
+            userAPI.deleteOwnPlayList("5ef9c92c3c9d7d4588c1bef2")
           }}>health</button>
           <button className={classes.categoriesbuttons}>science</button>
           <button className={classes.categoriesbuttons}>sports</button>

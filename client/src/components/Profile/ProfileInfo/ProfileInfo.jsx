@@ -6,17 +6,41 @@ import classes from "./ProfileInfo.module.css";
 import SimpleSlider from "../../common/Slider/Slider";
 import MyPostsContainer from "../MyPosts/MyPostsContainer";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import ProfileFollowButton from "./ProfileFollowButton";
 
 const ProfileInfo = (props) => {
+  const onMainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      props.savePhoto(e.target.files[0]);
+    }
+  };
+
   return (
     <div className={classes.allProfile}>
       <div className={classes.profile}>
         <div className={classes.avatarFrame}>
           <div className={classes.avatar}>
-            <img
-              src={props.profile.photos.large || DefaultPhoto}
-              alt="description"
-            />
+            {props.isOwner ? (
+              <img
+                src={props.profile.photos.large || DefaultPhoto}
+                alt="description"
+              />
+            ) : (
+              <div className={classes.savePhoto}>
+                <label htmlFor="save-photo">
+                  <img
+                    src={props.profile.photos.large || DefaultPhoto}
+                    alt="description"
+                  />
+                  <i className="fas fa-cloud-download-alt"></i>
+                </label>
+                <input
+                  id="save-photo"
+                  type="file"
+                  onChange={onMainPhotoSelected}
+                />
+              </div>
+            )}
           </div>
           <div className={classes.rateStars}>
             <Rate
@@ -67,6 +91,15 @@ const ProfileInfo = (props) => {
                 <strong>{props.profile.fullName || "Нет информации"}</strong>
               </h2>
               <i className="far fa-question-circle"></i>
+              {props.isOwner ? (
+                <ProfileFollowButton
+                  followStatus={props.followStatus}
+                  userId={props.profile.userId}
+                  follow={props.setFollowTrue}
+                  unfollow={props.setFollowFalse}
+                  fetchStatus={props.fetchStatus}
+                />
+              ) : null}
             </div>
             <p>online</p>
 
