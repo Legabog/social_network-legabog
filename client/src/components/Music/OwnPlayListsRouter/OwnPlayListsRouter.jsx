@@ -6,8 +6,6 @@ import BodyOwnPlayListsRouter from "./BodyOwnPlayListsRouter/BodyOwnPlayListsRou
 
 const OwnPlayListsRouter = (props) => {
 
-  console.log(props.img)
-
   return (
     <div className={classes.ownPlayListsRouter}>
       <HeaderOwnPlayListsRouter />

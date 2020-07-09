@@ -5,8 +5,6 @@ import { NavLink } from "react-router-dom";
 import PlayList from "../PlayList/PlayList";
 
 const BodyPlayLists = (props) => {
-  console.log(props.ownPlayLists)
-
   return (
     <div className={classes.bodyPlayLists}>
       {props.playListSwitcher ? null : (

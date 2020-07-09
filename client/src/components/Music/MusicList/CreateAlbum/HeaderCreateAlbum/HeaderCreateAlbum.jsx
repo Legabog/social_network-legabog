@@ -3,11 +3,18 @@ import classes from "./HeaderCreateAlbum.module.css";
 import { NavLink } from "react-router-dom";
 import AddPhoto from "../../../../../assets/apple theme/photo_add.png";
 import DefaultPhoto from "../../../../../assets/apple theme/music.jpg";
+import firebase from "firebase/app";
+import "firebase/storage";
 
 class HeaderCreateAlbum extends React.Component {
+  componentDidMount() {
+    console.log(DefaultPhoto)
+  }
+
   state = {
     imgAvatar: AddPhoto,
     img: DefaultPhoto,
+    nameImg: "",
     name: "",
     description: "",
   };
@@ -34,6 +41,7 @@ class HeaderCreateAlbum extends React.Component {
   };
 
   sendImage = (img) => {
+    this.setState({ nameImg: img });
     this.base64Encode(img);
     this.setState({
       img: window.URL.createObjectURL(img),
@@ -55,29 +63,44 @@ class HeaderCreateAlbum extends React.Component {
           <div
             className={classes.buttonDone}
             onClick={() => {
-              this.props.addToPlayList({
-                title: this.state.name + "",
-                description: this.state.description + "",
-                playlistcoverUrl: this.state.img,
+              //----------Firebase
 
-                tracks: [
-                  {
-                    title: "Track 1",
-
-                    author: "Author 1",
-
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "Track 2",
-
-                    author: "Author 2",
-
-                    trackUrl: "No url",
-                  },
-                ],
-              });
-              console.log(this.state.img);
+              var storage = firebase.storage();
+              var storageRef = storage.ref();
+              var imagesRef = storageRef.child(
+                `covers-playlists/${this.state.nameImg.name}`
+              );
+              imagesRef
+                .putString(this.state.img + "", "data_url")
+                .then(function (snapshot) {
+                  console.log("Uploaded a data_url string!");
+                })
+                .then(() => {
+                  //--------------Post reducer to MongoDB
+                  this.props.addToPlayList({
+                    title: this.state.name + "",
+                    description: this.state.description + "",
+                    playlistcoverUrl: `https://firebasestorage.googleapis.com/v0/b/covers-storage.appspot.com/o/covers-playlists%2F${this.state.nameImg.name}?alt=media&token=a0652844-6b70-495d-8dcd-a70dd5272ad8`,
+  
+                    tracks: [
+                      {
+                        title: "Track 1",
+  
+                        author: "Author 1",
+  
+                        trackUrl: "No url",
+                      },
+                      {
+                        title: "Track 2",
+  
+                        author: "Author 2",
+  
+                        trackUrl: "No url",
+                      },
+                    ],
+                  });
+                })
+              //----------------------
             }}
           >
             <h3>Done</h3>
@@ -95,7 +118,9 @@ class HeaderCreateAlbum extends React.Component {
               type="file"
               id="image-loader"
               accept="image/x-png, image/gif, image/jpeg, image/jpg"
-              onChange={(e) => this.sendImage(e.target.files[0])}
+              onChange={(e) => {
+                this.sendImage(e.target.files[0]);
+              }}
             ></input>
           </div>
           <div className={classes.inputs2}>
