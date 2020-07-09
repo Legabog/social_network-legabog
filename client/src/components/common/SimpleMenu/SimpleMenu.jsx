@@ -45,7 +45,7 @@ export const SimpleMenu = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => { window.location.reload() }}><NavLink style={{color: "#4A76A8"}} to={"/profile/" + props.userId}>My profile</NavLink></MenuItem>
+        <MenuItem onClick={() => {}}><NavLink style={{color: "#4A76A8"}} to={"/profile/"}>My profile</NavLink></MenuItem>
         <MenuItem onClick={() => {}}><NavLink style={{color: "#4A76A8"}} to={"/music"}>Music</NavLink></MenuItem>
         <MenuItem onClick={() => {}}><NavLink style={{color: "#4A76A8"}} to={"/settings"}>Settings</NavLink></MenuItem>
         <MenuItem onClick={() => {props.logout()}} ><NavLink style={{color: "#4A76A8"}} to={"/login"}>Logout</NavLink></MenuItem>
