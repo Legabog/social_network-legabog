@@ -101,6 +101,12 @@ export const userAPI = {
     });
   },
 
+
+  createMusicAlbum(data) {
+    return axios.post("http://localhost:4000/musicalbums/create-musicalbum", data)
+
+  },
+
   getMusicAlbums() {
     return axios
       .get("http://localhost:4000/musicalbums/get-musicalbums")

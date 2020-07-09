@@ -32,9 +32,26 @@ import {
   deleteOwnPlayList,
 } from "./redux/musicalplaylists-reducer";
 import OwnPlayListsRouter from "./components/Music/OwnPlayListsRouter/OwnPlayListsRouter";
+import firebase from "firebase/app"
+import 'firebase/storage';
+
 
 class App extends React.Component {
   componentDidMount() {
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCxA5YZP2u1BeiuAtesygR3xKUNS4WM0PA",
+      authDomain: "covers-storage.firebaseapp.com",
+      databaseURL: "https://covers-storage.firebaseio.com",
+      projectId: "covers-storage",
+      storageBucket: "covers-storage.appspot.com",
+      messagingSenderId: "456989699477",
+      appId: "1:456989699477:web:0e5e127c696069834e1a9c",
+      measurementId: "G-M27KYJSGPK",
+    };
+    firebase.initializeApp(firebaseConfig);
+
+
     this.props.initializeApp();
     this.props.getMusicAlbumsData();
     this.props.getMyOwnPlayLists();
@@ -81,7 +98,7 @@ class App extends React.Component {
                 exact
                 path="/music-list/playlists/create"
                 component={() => (
-                  <CreateAlbum addToPlayList={this.props.createNewPlayList} />
+                  <CreateAlbum addToPlayList={this.props.createNewPlayList} update={this.props.getMyOwnPlayLists}/>
                 )}
               />
               {this.props.musicAlbums.map((e) => (
