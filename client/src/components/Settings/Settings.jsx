@@ -28,42 +28,9 @@ const Settings = (props) => {
           <button
             className={classes.categoriesbuttons}
             onClick={() => {
-              userAPI.createMusicAlbum({
-                title: "На Человека",
-                author: "SALUKI",
-                albumcoverUrl:
-                  "//avatars.yandex.net/get-music-content/2266607/3d0e0af4.a.9337806-1/200x200",
-                tracks: [
-                  {
-                    title: "Вторник",
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "Вкус Твоих Слёз",
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "Кома",
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "0,33",
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "На Человека",
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "Лёд",
-                    trackUrl: "No url",
-                  },
-                  {
-                    title: "777",
-                    trackUrl: "No url",
-                  }
-                ],
-              });
+              Axios.put(`http://localhost:4000/musicalbums//update-album/5ed8c632b939c242b024f4bc`, {
+                albumcoverUrl: "https://avatars.yandex.net/get-music-content/2808981/865b055d.a.10258179-1/200x200"
+              })
             }}
           >
             business
