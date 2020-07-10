@@ -5,13 +5,13 @@ const SWITCH_STATE_OF_PLAYLISTS = "SWITCH_STATE_OF_PLAYLISTS";
 const ADD_TRACK_TO_PLAYLIST = "ADD_TRACK_TO_PLAYLIST";
 const SET_MY_OWN_PLAYLISTS_DATA = "SET_MY_OWN_PLAYLISTS_DATA";
 const TOGGLE_FETCH = "TOGGLE_FETCH";
-const CREATE_PLAYLIST = "CREATE_PLAYLIST"
 
 let initialState = {
   ownPlayLists: [],
   playListSwitcher: false,
   tempTrack: null,
   fetch: false,
+  tempTrackPayLoad: null
 };
 
 const musicPlayListReducer = (state = initialState, action) => {
@@ -64,10 +64,10 @@ export const addToPlayList = (img, name, description) => {
   };
 };
 
-export const addTrackToPlayList = (title, author) => {
+export const addTrackToPlayList = (title, author, trackUrl, albumTitle) => {
   return {
     type: ADD_TRACK_TO_PLAYLIST,
-    track: { title, author },
+    track: { title, author, trackUrl, albumTitle },
   };
 };
 
@@ -96,6 +96,14 @@ export const createNewPlayList = (data) => {
 export const deleteOwnPlayList = (id) => {
   return (dispatch) => {
     userAPI.deleteOwnPlayList(id).then(() => {
+      dispatch(getMyOwnPlayLists())
+    })
+  }
+}
+
+export const updatePlaylist = (id, data) => {
+  return (dispatch) => {
+    userAPI.updateOwnPlayList(id, data).then((response) => {
       dispatch(getMyOwnPlayLists())
     })
   }

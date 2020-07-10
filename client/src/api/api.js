@@ -139,8 +139,13 @@ export const userAPI = {
 
   deleteOwnPlayList(id) {
     return axios.delete(
-      `http://localhost:4000/myownplaylists//delete-playlist/${id}`
+      `http://localhost:4000/myownplaylists/delete-playlist/${id}`
     );
+  },
+
+  updateOwnPlayList(id, data) {
+    return axios.put(`http://localhost:4000/myownplaylists/update-playlist/${id}`, data)
+
   },
 
   getNews(country, category) {
