@@ -23,8 +23,13 @@ const BodyPlayLists = (props) => {
           img={e.playlistcoverUrl}
           name={e.title}
           description={e.description}
+          id={e._id}
+          tracks={e.tracks}
+          tempTrack={props.tempTrack}
+          updatePlaylist={props.updatePlaylist}
           playListSwitcher={props.playListSwitcher}
           addTrackToPlayList={props.addTrackToPlayList}
+          switchStateOfPlayLists={props.switchStateOfPlayLists}
         />
       ))}
       <div className={classes.lastBlock}></div>

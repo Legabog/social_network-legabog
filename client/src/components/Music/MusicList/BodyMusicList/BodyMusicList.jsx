@@ -20,7 +20,12 @@ const BodyMusicList = (props) => {
       </NavLink>
       <hr />
       <NavLink to="/music-list/playlists">
-        <div className={classes.item3}>
+        <div
+          className={classes.item3}
+          onClick={() => {
+            props.switchStateOfPlayLists(false);
+          }}
+        >
           <h3>Playlists</h3>
           <i className="fas fa-chevron-right"></i>
         </div>

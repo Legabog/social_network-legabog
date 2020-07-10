@@ -13,7 +13,7 @@ const BodyOwnPlayListsRouter = (props) => {
       </div>
       <div className={classes.playListTitle}>
         <h1>{props.title}</h1>
-        <h4 onClick={() => props.AddTrack({ title: "Qwe", author: "tri" })}>
+        <h4 >
           {props.description}
         </h4>
         <div className={classes.playListTracks}>

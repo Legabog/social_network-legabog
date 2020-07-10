@@ -7,13 +7,14 @@ import { connect } from "react-redux";
 import {
   toggleSwitcher,
 } from "../../../redux/musicalbums-reducer";
+import {switchStateOfPlayLists} from "../../../redux/musicalplaylists-reducer"
 
 class MusicList extends React.Component {
   render() {
     return (
       <div className={classes.musicList}>
         <HeaderMusicList />
-        <BodyMusicList />
+        <BodyMusicList switchStateOfPlayLists={this.props.switchStateOfPlayLists}/>
         <FooterMusicList
           recentlyPlayed={this.props.recentlyPlayed}
           toggleSwitcher={this.props.toggleSwitcher}
@@ -31,4 +32,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   toggleSwitcher,
+  switchStateOfPlayLists
 })(MusicList);

@@ -30,7 +30,9 @@ const TracksItem = (props) => {
                 switchStateOfPlayLists={props.switchStateOfPlayLists}
                 addTrackToPlayList={props.addTrackToPlayList}
                 title={e.title}
+                albumTitle={props.title}
                 author={props.author}
+                trackUrl={e.trackUrl}
               />
             </div>
             <hr />

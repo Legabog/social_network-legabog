@@ -8,7 +8,6 @@ import "firebase/storage";
 
 class HeaderCreateAlbum extends React.Component {
   componentDidMount() {
-    console.log(DefaultPhoto)
   }
 
   state = {
@@ -63,44 +62,39 @@ class HeaderCreateAlbum extends React.Component {
           <div
             className={classes.buttonDone}
             onClick={() => {
-              //----------Firebase
+              if (this.state.img === DefaultPhoto) {
+                this.props.addToPlayList({
+                  title: this.state.name + "",
+                  description: this.state.description + "",
+                  playlistcoverUrl: `https://firebasestorage.googleapis.com/v0/b/covers-storage.appspot.com/o/covers-playlists%2Fmusic.jpg?alt=media&token=db800deb-7496-4b40-b57d-df2168e69fd6`,
 
-              var storage = firebase.storage();
-              var storageRef = storage.ref();
-              var imagesRef = storageRef.child(
-                `covers-playlists/${this.state.nameImg.name}`
-              );
-              imagesRef
-                .putString(this.state.img + "", "data_url")
-                .then(function (snapshot) {
-                  console.log("Uploaded a data_url string!");
-                })
-                .then(() => {
-                  //--------------Post reducer to MongoDB
-                  this.props.addToPlayList({
-                    title: this.state.name + "",
-                    description: this.state.description + "",
-                    playlistcoverUrl: `https://firebasestorage.googleapis.com/v0/b/covers-storage.appspot.com/o/covers-playlists%2F${this.state.nameImg.name}?alt=media&token=a0652844-6b70-495d-8dcd-a70dd5272ad8`,
-  
-                    tracks: [
-                      {
-                        title: "Track 1",
-  
-                        author: "Author 1",
-  
-                        trackUrl: "No url",
-                      },
-                      {
-                        title: "Track 2",
-  
-                        author: "Author 2",
-  
-                        trackUrl: "No url",
-                      },
-                    ],
+                  tracks: [],
+                });
+              } else {
+                //----------Firebase
+
+                var storage = firebase.storage();
+                var storageRef = storage.ref();
+                var imagesRef = storageRef.child(
+                  `covers-playlists/${this.state.nameImg.name}`
+                );
+                imagesRef
+                  .putString(this.state.img + "", "data_url")
+                  .then(function (snapshot) {
+                    console.log("Uploaded a data_url string!");
+                  })
+                  .then(() => {
+                    //--------------Post reducer to MongoDB
+                    this.props.addToPlayList({
+                      title: this.state.name + "",
+                      description: this.state.description + "",
+                      playlistcoverUrl: `https://firebasestorage.googleapis.com/v0/b/covers-storage.appspot.com/o/covers-playlists%2F${this.state.nameImg.name}?alt=media&token=a0652844-6b70-495d-8dcd-a70dd5272ad8`,
+
+                      tracks: [],
+                    });
                   });
-                })
-              //----------------------
+                //----------------------
+              }
             }}
           >
             <h3>Done</h3>
