@@ -7,7 +7,9 @@ const TracksItem = (props) => {
       <div className={classes.item}>
         <div className={classes.description}>
           <div className={classes.titleAndAuthor}>
-            <h6>{props.title}</h6>
+            <h6 onClick={() => {
+              window.open(`${props.trackUrl}`, "_blank")
+            }}>{props.title}</h6>
             <p>{props.author}</p>
           </div>
           <i className="fas fa-ellipsis-h"></i>

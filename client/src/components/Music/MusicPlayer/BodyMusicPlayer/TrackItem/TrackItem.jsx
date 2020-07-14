@@ -20,8 +20,10 @@ const TracksItem = (props) => {
                       props.img,
                       props.title,
                       props.author
-                    );
+                    );                    
                   }
+
+                  window.open(`${e.trackUrl}`, "_blank")
                 }}
               >
                 {e.title}

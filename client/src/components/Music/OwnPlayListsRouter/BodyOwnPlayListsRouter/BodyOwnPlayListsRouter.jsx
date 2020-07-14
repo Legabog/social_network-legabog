@@ -4,7 +4,6 @@ import DefaultMusic from "../../../../assets/apple theme/music.jpg";
 import TracksItem from "./TrackItem/TrackItem";
 import { NavLink } from "react-router-dom";
 
-
 const BodyOwnPlayListsRouter = (props) => {
   return (
     <div className={classes.bodyOwnPlayListsRouter}>
@@ -13,12 +12,15 @@ const BodyOwnPlayListsRouter = (props) => {
       </div>
       <div className={classes.playListTitle}>
         <h1>{props.title}</h1>
-        <h4 >
-          {props.description}
-        </h4>
+        <h4>{props.description}</h4>
         <div className={classes.playListTracks}>
           {props.tracks.map((e) => (
-            <TracksItem key={e._id} title={e.title} author={e.author} />
+            <TracksItem
+              key={e._id}
+              title={e.title}
+              author={e.author}
+              trackUrl={e.trackUrl}
+            />
           ))}
         </div>
         <div className={classes.delete}>
