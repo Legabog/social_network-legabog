@@ -1,6 +1,5 @@
 import * as axios from "axios";
 
-
 const instance = axios.create({
   withCredentials: true,
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
@@ -37,24 +36,24 @@ export const userAPI = {
   },
 
   savePhoto(photoFile) {
-    const formData = new FormData()
-    formData.append("image", photoFile)
+    const formData = new FormData();
+    formData.append("image", photoFile);
 
-    return instance.put(`profile/photo`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    }).then((response) => {
-      return response.data
-    })
-
+    return instance
+      .put(`profile/photo`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        return response.data;
+      });
   },
 
   getFollow(id) {
     return instance.get(`follow/${id}`).then((response) => {
-      return response.data
-    })
-
+      return response.data;
+    });
   },
 
   authMe() {
@@ -101,10 +100,11 @@ export const userAPI = {
     });
   },
 
-
   createMusicAlbum(data) {
-    return axios.post("http://localhost:4000/musicalbums/create-musicalbum", data)
-
+    return axios.post(
+      "http://localhost:4000/musicalbums/create-musicalbum",
+      data
+    );
   },
 
   getMusicAlbums() {
@@ -143,9 +143,17 @@ export const userAPI = {
     );
   },
 
-  updateOwnPlayList(id, data) {
-    return axios.put(`http://localhost:4000/myownplaylists/update-playlist/${id}`, data)
+  deleteTrack(id) {
+    return axios.delete(
+      `http://localhost:4000/myownplaylists/delete-track/${id}`
+    );
+  },
 
+  updateOwnPlayList(id, data) {
+    return axios.put(
+      `http://localhost:4000/myownplaylists/update-playlist/${id}`,
+      data
+    );
   },
 
   getNews(country, category) {
