@@ -16,6 +16,7 @@ const OwnPlayListsRouter = (props) => {
         description={props.description}
         tracks={props.tracks}
         deleteOwnPlayList={props.deleteOwnPlayList}
+        deleteTrackFromPlayList={props.deleteTrackFromPlayList}
       />
     </div>
   );

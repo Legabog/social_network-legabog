@@ -8,7 +8,7 @@ const FooterMusicList = (props) => {
   return (
     <div className={classes.footerMusicList}>
       <h1 onClick={() => {
-        userAPI.deleteTrack("5f0dc8293a3e91415893f089")
+        userAPI.deleteTrack("5f0f0ea8bbc4f63fe8ae5789", "5f0dc7ae3a3e91415893f088")
       }}>Recently played: </h1>
       {props.recentlyPlayed.map((e) => (
         <FooterItem

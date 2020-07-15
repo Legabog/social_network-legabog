@@ -33,6 +33,7 @@ const mapStateToProps = (state) => {
     ownPlayLists: state.musicPlayListReducer.ownPlayLists,
     tempTrack: state.musicPlayListReducer.tempTrack,
     playListSwitcher: state.musicPlayListReducer.playListSwitcher,
+    fetch: state.musicPlayListReducer.fetch
   };
 };
 

@@ -12,6 +12,8 @@
     font-size: 130%;
     margin-bottom: 0px;
   }
+
+ 
   
   .item:hover h6{
     margin-left: 40px;
@@ -22,11 +24,13 @@
     margin-left: 40px;
     color: #F62A54;  
   }
-  
-  .item:hover i {
+
+  .item:hover button {
     margin-left: -40px;
-    color: #F62A54;  
+    
   }
+
+ 
 
   .description {
     display: flex;
@@ -34,7 +38,7 @@
   
   .description h6 {
     font-size: 160%;
-    width: 580px;
+    width: 556px;
     margin-bottom: 0px;
   }
   

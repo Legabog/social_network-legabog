@@ -20,6 +20,9 @@ const BodyOwnPlayListsRouter = (props) => {
               title={e.title}
               author={e.author}
               trackUrl={e.trackUrl}
+              id={e._id}
+              pid={props.id}
+              deleteTrackFromPlayList={props.deleteTrackFromPlayList}
             />
           ))}
         </div>
