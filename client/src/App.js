@@ -30,6 +30,7 @@ import {
   getMyOwnPlayLists,
   createNewPlayList,
   deleteOwnPlayList,
+  deleteTrackFromPlayList
 } from "./redux/musicalplaylists-reducer";
 import OwnPlayListsRouter from "./components/Music/OwnPlayListsRouter/OwnPlayListsRouter";
 import firebase from "firebase/app"
@@ -98,7 +99,7 @@ class App extends React.Component {
                 exact
                 path="/music-list/playlists/create"
                 component={() => (
-                  <CreateAlbum addToPlayList={this.props.createNewPlayList} update={this.props.getMyOwnPlayLists}/>
+                  <CreateAlbum fetch={this.props.fetch} addToPlayList={this.props.createNewPlayList} update={this.props.getMyOwnPlayLists}/>
                 )}
               />
               {this.props.musicAlbums.map((e) => (
@@ -139,6 +140,7 @@ class App extends React.Component {
                       description={e.description}
                       tracks={e.tracks}
                       deleteOwnPlayList={this.props.deleteOwnPlayList}
+                      deleteTrackFromPlayList={this.props.deleteTrackFromPlayList}
                     />
                   )}
                 />
@@ -177,5 +179,6 @@ export default compose(
     getMyOwnPlayLists,
     createNewPlayList,
     deleteOwnPlayList,
+    deleteTrackFromPlayList
   })
 )(App);

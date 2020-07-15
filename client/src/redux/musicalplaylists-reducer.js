@@ -101,6 +101,14 @@ export const deleteOwnPlayList = (id) => {
   }
 }
 
+export const deleteTrackFromPlayList = (id, pid) => {
+  return (dispatch) => {
+    userAPI.deleteTrack(id,pid).then(() => {
+      dispatch(getMyOwnPlayLists())
+    })
+  }
+}
+
 export const updatePlaylist = (id, data) => {
   return (dispatch) => {
     userAPI.updateOwnPlayList(id, data).then((response) => {

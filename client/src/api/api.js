@@ -143,9 +143,9 @@ export const userAPI = {
     );
   },
 
-  deleteTrack(id) {
+  deleteTrack(trackId, playlistId) {
     return axios.delete(
-      `http://localhost:4000/myownplaylists/delete-track/${id}`
+      `http://localhost:4000/myownplaylists/delete-playlist/${playlistId}/delete-track/${trackId}`
     );
   },
 
