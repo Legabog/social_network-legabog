@@ -75,16 +75,27 @@ router.route("/delete-playlist/:id").delete((req, res, next) => {
 });
 
 // Delete Track by id
-router.route("/delete-track/:id").delete((req, res, next) => {
-  myOwnPlayListsSchema.findOneAndRemove(
-    { _id: req.params.id },
-    req.body,
-    function (err, data) {
-      if (!err) {
-        console.log("Deleted");
+router
+  .route("/delete-playlist/:pid/delete-track/:id")
+  .delete((req, res, next) => {
+    // myOwnPlayListsSchema.update(
+    //   {},
+    //   { $pull: { "tracks._id": req.params.id } },
+    //   { multi: true }
+    // );
+
+    myOwnPlayListsSchema.findByIdAndUpdate(
+      req.params.pid,
+      { $pull: { tracks: { _id: req.params.id } } },
+      function (err, data) {
+        if (err) {
+          return handleError(res, err);
+        }
+        return res.status(200).json(data.tracks);
       }
-    }
-  );
-});
+    );
+
+    console.log(req.params);
+  });
 
 module.exports = router;
