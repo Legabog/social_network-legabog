@@ -9,7 +9,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.2.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "firebase": "^7.15.5",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
